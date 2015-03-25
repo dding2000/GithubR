@@ -34,13 +34,13 @@ DWBUnitRoot <- function(x, n=1, symbol="AIC"){
 	return(unitroot)
 }
 
-####线性回归检验, 出图
+####线性回归检验
 LinearModelTest <- function(lm.fit) {
 	par(mfrow=c(2,2))
 	plot(lm.fit)
 	par(mfrow=c(1,1))
 
-	##绘制学生化残差图的函数，出图
+	##绘制学生化残差图的函数
 	residplot <- function(fit, nbreaks=10){
     z <- rstudent(fit)
     hist(z, breaks=nbreaks, freq=FALSE,
@@ -62,7 +62,7 @@ LinearModelTest <- function(lm.fit) {
     IndependenceOfErrorTest=durbinWatsonTest(lm.fit) #误差的独立性检验
 	OutlierTest=outlierTest(lm.fit) # 离群
 
-	#线性检验, 出图
+	#线性检验
 	crPlots(lm.fit, main="线性检验")
 
 	#非参数方差齐性检验
